@@ -20,13 +20,11 @@ let users = {};
 io.on("connection", (socket) => {
   // ...
   connections[socket.id] = {};
-  // console.log(JSON.stringify(connections));
   socket.on("ice candidates", (newIceCandidates) => {
     if (!connections[socket.id].iceCandidates) {
       connections[socket.id].iceCandidates = {};
     }
     connections[socket.id].iceCandidates = newIceCandidates;
-    // console.log(JSON.stringify(connections));
   })
 
   socket.on("name", (name) => {

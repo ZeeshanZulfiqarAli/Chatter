@@ -31,12 +31,10 @@ function UserForm({ setName }) {
         })
 
         socket.on('username assigned', () => {
-            console.log('--', inputRef.current.value);
             const value = inputRef.current.value;
             inputRef.current.value = '';
             setInProgress(false);
             setName(value);
-            console.log(value)
         })
 
         return () => {

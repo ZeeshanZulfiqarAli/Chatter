@@ -7,7 +7,7 @@ function IncomingRequest({ generateAnswer, setName2, createDataChannel }) {
 
     const handleOnClickAccept = useCallback(async () => {
         const generatedAnswer = await generateAnswer(incomingRequestData.candidates);
-        console.log('this answer generated', generatedAnswer);
+
         socket.emit('propagate answer', incomingRequestData.name, generatedAnswer);
         setName2(incomingRequestData.name);
         createDataChannel();

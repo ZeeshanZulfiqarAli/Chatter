@@ -1,11 +1,8 @@
 function gatherIceCandidates( lc, onCandidate ) {
-    
-    console.log('=', lc);
 
     let t;
     lc.onicecandidate = e =>  {
         console.log(" NEW ice candidnat!! on localconnection reprinting SDP " )
-        console.log(JSON.stringify(lc.localDescription))
         if (t) {
             clearTimeout(t);
         }
@@ -20,7 +17,6 @@ function gatherIceCandidates( lc, onCandidate ) {
     sendChannel.onclose =e => console.log("closed!!!!!!");
 
     lc.createOffer().then(o => {
-        console.log('____', o);
         lc.setLocalDescription(o)
     })
 
