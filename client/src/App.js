@@ -27,17 +27,14 @@ function App() {
   const [localConnection] = useState(new RTCPeerConnection(iceConfiguration));
 
   const handleOnCandidate = useCallback((candidates) => {
-    console.log('****',candidates);
     socket.emit('ice candidates', candidates);
   });
 
   const handleOnAnswer = useCallback((answer) => {
-    console.log('got answer', answer, typeof answer);
     localConnection.setRemoteDescription(answer);
   });
   
   const generateAnswer = useCallback(async (offer) => {
-    console.log('generating answer');
     await localConnection.setRemoteDescription(offer);
     const a = await localConnection.createAnswer();
     await localConnection.setLocalDescription(a);
