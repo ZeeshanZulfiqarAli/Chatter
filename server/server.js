@@ -2,9 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const { createServer } = require("http");
 const { Server } = require("socket.io");
+const path = require('path');
 
 const app = express();
 const httpServer = createServer(app);
+
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 const io = new Server(httpServer, {
   cors: {
@@ -74,6 +78,11 @@ io.on("connection", (socket) => {
 
 //   res.json(customers);
 // });
+
+// All other GET requests not handled before will return our React app
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
 
 const port = 5000;
 

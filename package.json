@@ -10,7 +10,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "client-build": "cd client && npm run build"
   },
-  "author": "Brad Traversy",
+  "author": "Zeeshan Zulfiqar Ali Dossani",
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^1.14.6"
