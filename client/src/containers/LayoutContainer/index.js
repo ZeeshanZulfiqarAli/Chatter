@@ -4,7 +4,7 @@ function LayoutContainer({children}) {
 
     return (
         <header>
-            <h1>Chatter!</h1>
+            <h1>Chattei!</h1>
             { children }
         </header>
     );

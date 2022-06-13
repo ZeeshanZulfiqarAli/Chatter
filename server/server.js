@@ -79,11 +79,6 @@ io.on("connection", (socket) => {
 //   res.json(customers);
 // });
 
-// All other GET requests not handled before will return our React app
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
-
 const port = 5000;
 
 httpServer.listen(port, () => `Server running on port ${port}`);
