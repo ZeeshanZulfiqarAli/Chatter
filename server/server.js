@@ -5,6 +5,8 @@ const { Server } = require("socket.io");
 const path = require('path');
 
 const app = express();
+// const httpServer = require('http').Server(app);
+
 const httpServer = createServer(app);
 
 // Have Node serve the files for our built React app
@@ -79,6 +81,7 @@ io.on("connection", (socket) => {
 //   res.json(customers);
 // });
 
-const port = 5000;
+const port = process.env.PORT || 5000;
+const server_host = process.env.YOUR_HOST || '0.0.0.0';
 
-httpServer.listen(port, () => `Server running on port ${port}`);
+httpServer.listen(port, server_host, () => `Server running on port ${port}`);
